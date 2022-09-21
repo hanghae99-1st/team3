@@ -13,7 +13,7 @@
             crossorigin="anonymous"></script>
 
     <title> 독후감 </title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
     <style>
@@ -21,71 +21,8 @@
             font-family: 'Gowun Dodum', sans-serif;
         }
 
-        .mytitle {
-            width: 100%;
-            height: 250px;
 
-            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://movie-phinf.pstatic.net/20210715_95/1626338192428gTnJl_JPEG/movie_image.jpg');
-            background-position: center;
-            background-size: cover;
 
-            color: white;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .mytitle > button {
-            width: 200px;
-            height: 50px;
-
-            background-color: transparent;
-            color: white;
-
-            border-radius: 50px;
-            border: 1px solid white;
-
-            margin-top: 10px;
-        }
-
-        .mytitle > button:hover {
-            border: 2px solid white;
-        }
-
-        .mycomment {
-            color: gray;
-        }
-
-        .mycards {
-            margin: 20px auto 0px auto;
-            width: 95%;
-            max-width: 1200px;
-        }
-
-        .mypost {
-            width: 95%;
-            max-width: 500px;
-            margin: 20px auto 0px auto;
-            padding: 20px;
-            box-shadow: 0px 0px 3px 0px gray;
-
-            display: none;
-        }
-
-        .mybtns {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-
-            margin-top: 20px;
-        }
-
-        .mybtns > button {
-            margin-right: 10px;
-        }
     </style>
     <script>
         $(document).ready(function () {
@@ -120,8 +57,8 @@
                                                     <p class="card-text">${desc}</p>
                                                     <p>${star_image}</p>
                                                     <p class="mycomment">${comment}</p>
-                                                    <button type="button"  onclick="open_edit(${num})" class="btn btn-outline-secondary btn-sm">수정</button>
-                                                    <button type="button"  onclick="delete_edit(${num})" class="btn btn-outline-secondary btn-sm">삭제</button>
+                                                    <button type="button"  onclick="open_edit(${num})" class="btn btn-primary mb-3">수정</button>
+                                                    <button type="button"  onclick="delete_edit(${num})" class="btn btn-primary mb-3">삭제</button>
                                                 </div>
                                             </div>
                                         </div>`
@@ -157,10 +94,15 @@
         function delete_edit(num) {
             console.log('콘솔로그체크')
             $('#delete-box').show()  //id: delete-box
-            let temp_html = `<h3>삭제하시겠습니까?</h3>
-                                  <div class="delete_btns">
-                                      <button onclick="delete_btn(${num})" type="button" class="btn btn-outline-dark ">삭제</button>
-                                      <button onclick="cancel_btn()" type="button" class="btn btn-dark ">취소</button>
+            let temp_html = ` <div class="delete_box">
+                             <div class="delete-box-title">
+                                  <h3>삭제하시겠습니까?</h3>
+                                  </div>
+                                  <div class="delete-box-content">
+                                  <div class="delete_box-content-btn">
+                                      <button onclick="delete_btn(${num})" type="button" class="btn btn-primary mb-3">삭제</button>
+                                      <button onclick="cancel_btn()" type="button" class="btn btn-primary mb-3">취소</button>
+                                  </div>
                                   </div>`
             $('#delete-box').append(temp_html)
         }
@@ -210,23 +152,33 @@
 
                         if (num === num1) {
                             temp_html = `
-                                             <div class="edit-box">
+                                             <div class="edit-box" >
                                                  <div class="edit-box-title">
-                                                     <h3>사이트 수정하기</h3>
+                                                 <h3>수정하기</h3>
+
                                                  </div>
                                                  <div class="edit-box-content">
                                                      <div class="edit-box-content-url">
-                                                         <input type="text" id="url_e" value="${url}">
+                                                         <input class="form-control" type="text" id="url_e" value="${url}">
                                                      </div>
                                                      <div class="edit-box-content-star">
-                                                         <input type="text" id="star_e" value="${star}">
+                                                         <label class="input-group-text" for="inputGroupSelect01"value="${star}">
+                                                            <select class="form-select" id="star_e">
+                                                                <option selected>-- 선택하기 --</option>
+                                                                <option value="1">⭐</option>
+                                                                <option value="2">⭐⭐</option>
+                                                                <option value="3">⭐⭐⭐</option>
+                                                                <option value="4">⭐⭐⭐⭐</option>
+                                                                <option value="5">⭐⭐⭐⭐⭐</option>
+                                                                </label>
+                                                            </select>
                                                      </div>
                                                      <div class="edit-box-content-comment">
-                                                         <input type="text" id="comment_e" value="${comment}">
+                                                         <input class="form-control" type="text" id="comment_e" value="${comment}">
                                                      </div>
                                                      <div class="edit-box-content-btn">
-                                                         <button class="edit-box-content-btn-save" onclick="edit_order(${num})">수정하기</button>
-                                                         <button class="edit-box-content-btn-cancel" onclick="close_edit()">닫기</button>
+                                                         <button class="btn btn-primary mb-3" onclick="edit_order(${num})">수정하기</button>
+                                                         <button class="btn btn-primary mb-3" onclick="close_edit()">닫기</button>
                                                      </div>
                                                  </div>
                                              </div> `
@@ -281,9 +233,12 @@
     <h1>독후감</h1>
     <button onclick="open_box()">기록하기</button>
 </div>
-<div class="myedit" id="edit-box">
-</div>
-<div id="delete-box"></div>
+<div class="myedit" id="edit-box"></div>
+
+
+<div class="mydelete" id="delete-box"></div>
+
+
 <div class="mypost" id="post-box">
     <div class="form-floating mb-3">
         <input id="url" type="email" class="form-control" placeholder="name@example.com">
@@ -305,7 +260,7 @@
         <label for="floatingTextarea2">코멘트</label>
     </div>
     <div class="mybtns">
-        <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
+        <button onclick="posting()" type="button" class="btn btn-primary mb-3">기록하기</button>
         <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
     </div>
 </div>
@@ -316,10 +271,10 @@
                 <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
                      class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">영화 제목이 들어갑니다</h5>
-                    <p class="card-text">여기에 영화에 대한 설명이 들어갑니다.</p>
+                    <h5 class="card-title"> 제목이 들어갑니다</h5>
+                    <p class="card-text">여기에 설명이 들어갑니다.</p>
                     <p>⭐⭐⭐</p>
-                    <p class="mycomment">나의 한줄 평을 씁니다</p>
+                    <p class="mycomment">나의 독후감을 씁니다</p>
                 </div>
             </div>
         </div>
