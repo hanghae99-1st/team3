@@ -1,22 +1,9 @@
 import requests
+import json
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify
-from django.shortcuts import render
 
 from pymongo import MongoClient
-
-from django.conf import settings
-settings.configure()
-
-import os
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "projects.settings")
-
-import django
-
-django.setup()
-
-
 
 client = MongoClient('mongodb+srv://test:sparta@Cluster0.zysnu4d.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
@@ -26,10 +13,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('main.html')
 
 
-@app.route('/book/detail', methods=["GET"])
+@app.route('/detail', methods=["GET"])
 def book_post():
     url = 'http://openapi.seoul.go.kr:8088/5172794b68717764353457746a6876/xml/bookStoreNewInfo/1/244'
 
@@ -42,13 +29,22 @@ def book_post():
     rows = soup.find_all("row")
 
     for row in rows:
-        bookId = row.find('UID_').string
-        title = row.find('G_NAME').string
-        selling = row.find('PONGJEL_YN').string
-        price = row.find('G_PRICE').string
-        desc = row.find('G_SIMPLE').string
-        year = row.find('PUBLIC_YEAR').string
-        img = row.find('IMG_URL').string
+        if row != None:
+            bookId = row.find('UID_').string
+            title = row.find('G_NAME').string
+            selling = row.find('PONGJEL_YN').string
+            price = row.find('G_PRICE').string
+            desc = row.find('G_SIMPLE').string
+            year = row.find('PUBLIC_YEAR').string
+            img = row.find('IMG_URL').string
+        else:
+            bookId == 'none',
+            title == 'none',
+            selling == 'none',
+            price == 'none',
+            desc == 'none',
+            year == 'none',
+            img == 'none'
 
         doc = {
             "bookId": bookId,
@@ -63,9 +59,33 @@ def book_post():
         db.books.insert_one(doc)
 
     book_lists = list(db.books.find({}, {'_id': False}))
+    dict_result = []
+    for i in book_lists:
+        dict_list = []
+        dict_list.append(i)
+        dicttolist = dict_list[0]
+        result = list(dicttolist.values())
 
-    return render(request, 'index.html', {'book_lists': book_lists})
+        for j in dicttolist:
+            dict_plus = {
+                'id': result[0],
+                'img': result[6],
+                '제목': result[1],
+                '판매여부': result[2],
+                '가격': result[3],
+                '설명': result[4],
+                '출판연도': result[5]
+            }
+            dict_result.append(dict_plus)
+
+    json_data = json.dumps(dict_result)
+
+
+    return render_template('main.html', json_data = json_data)
+
 
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
+
+
