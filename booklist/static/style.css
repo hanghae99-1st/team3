@@ -1,0 +1,246 @@
+* {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+        .active{
+
+        }
+        /*home.html css 적용내용*/
+         * {margin:0; padding: 0; box-sizing: border-box;}
+.signup_text{
+    height: 40;
+    width: auto;
+    border-radius: initial;
+    display: table;
+    width: auto;
+    text-align: center;
+    vertical-align: middle;
+
+}
+body1{
+    font-family: 'Noto Sans KR', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    background: url("spartabg.png") no-repeat center;
+    background-size: cover;
+    background-blend-mode: darken;
+
+
+}
+body1::before {
+    content: "";
+    position:unset ; z-index: 1;
+
+
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: rgba(0,0,0,.7);
+
+}
+.login-form {position: relative; z-index: 2;}
+.login-form h1 {
+    font-size: 32px; color: #fff;
+    text-align: center;
+    margin-bottom: 60px;
+
+
+}
+.int-area {
+    width: 400px; position: relative;
+    margin-top: 20px;
+
+}
+.int-area:first-child {margin-top: 0;}
+.int-area input {
+    width:100%;
+    padding: 20px 10px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size:18px; color: #fff;
+    outline: none;
+}
+.int-area label {
+    position: absolute; left: 10px; top: 15px;
+    font-size: 18px; color: #999;'
+    transition: all .5s ease;
+}
+.int-area label.warning {
+    color: red !important;
+    animation: warning .3s ease;
+    animation-iteration-count: 3;
+}
+@keyframes warning {
+    0% {transform: translateX(-8px);}
+    25% {transform: translateX(8px);}
+    50% {transform: translateX(-8px);}
+    75% {transform: translateX(8px);}
+}
+.int-area input:focus + label,
+.int-area input:valid + label {
+    top: -2px;
+    font-size: 13px; color: #166cea;
+}
+
+.btn-area {margin-top: 30px;}
+.btn-area  {
+    width: 100%; height: 50px;
+    background: #166cea;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.btn {
+    width: 100%; height: 50px;
+    background: #166cea;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.caption {
+    margin-top: 20px;
+    text-align: center;
+}
+.caption a {
+    font-size: 15px; color: #999;
+    text-decoration: none;
+}
+
+/** kakao button 영역*/
+.kakao-btn-area {
+    width: 100%;
+    height:60px;
+    border:none;
+    border-radius: 25px;
+
+
+}
+
+h1{color: blue;}
+#window{border:1px solid; margin:10px; padding:10px;}
+
+ login user css
+:root {
+  --black: #000000;
+  --almost-black: #263238;
+  --white: #ffffff;
+  --almost-white: #FBFBFB;
+  --grey-light: #CFD8DC;
+  --grey: #B0BEC5;
+  --grey-medium: #78909C;
+  --grey-dark: #455A64;
+  --primary: #1E88E5;
+  --primary-dark: #1976D2;
+  --secondary: #CFD8DC;
+  --secondary-dark: #B0BEC5;
+  --red: #EF4836;
+}
+
+        /*home.html css 적용내용*/
+        .mytitle {
+            width: 100%;
+            height: 150px;
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("wave.png");
+            background-position: center;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .mytitle > button {
+            width: 200px;
+            height: 50px;
+            background-color: transparent;
+            color: white;
+            border-radius: 50px;
+            border: 1px solid white;
+            margin-top: 10px;
+        }
+        .mytitle > button:hover {
+            border: 2px solid white;
+        }
+        .mycomment {
+            color: gray;
+        }
+        .mycards {
+            margin: 20px auto 0px auto;
+            width: 95%;
+            max-width: 1200px;
+        }
+        .mypost {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto 0px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 3px 0px gray;
+            display: none;
+        }
+        .mybtn {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .mybtn > button {
+            margin-right: 10px;
+        }
+        .wrap {
+            max-width: 1200px;
+            margin: 20px auto 0px auto;
+        }
+        .change {
+
+            display: flex;
+            flex-direction: row;
+        }
+        .change > button {
+
+            margin-left: auto;
+
+            height: 30px;
+
+            border: 1px solid white;
+
+        }
+        .myedit {
+            background-color: grey;
+            max-width: 500px;
+            width: 95%;
+            margin: 20px auto 0 auto;
+            padding: 20px;
+            box-shadow: 0px 0px 3px 0px gray;
+            display: none;
+        }
+        .btns {
+            margin-left: auto;
+        }
+        .btns > button {
+             border: 1px solid white;
+            font-size: small;
+        }
+         .delete {
+            background-color: grey;
+            max-width: 500px;
+            width: 95%;
+            margin: 20px auto 0 auto;
+            box-shadow: 0px 0px 3px 0px gray;
+            border-radius: 5px;
+            padding: 30px;
+            display: none;
+        }
+        .delete_btns {
+            margin-top: 20px;
+        }
+        .delete_btns > button {
+            margin-right: 10px;
+        }
