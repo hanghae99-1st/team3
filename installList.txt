@@ -1,0 +1,10 @@
+requests, bs4, flask, djangoshortcuts, pymongo, django
+
+requests==2.28.1
+bs4==0.0.1
+Flask==2.2.2
+djangoshortcuts
+pymongo==4.2.0
+Django==4.1.1
+lxml==4.9.1
+urllib3==1.26.12
